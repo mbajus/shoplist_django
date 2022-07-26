@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %}ShopList - your grocery lists!{% endblock %}
+
+{% block contenttitle %}My shopping lists!{% endblock %}
+
+{% block content %}
+    <div class="list-group">
+        {% for sl in user.shoplist.all %}
+            <a href="/mylist/{{sl.id}}" class="list-group-item list-group-item-action">{{sl.name}}</a>      
+        {% endfor %}
+    </div>   
+    <br></br>
+    <form method="POST" action="/mylist/">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Create new list</span>
+            <input type="text" name="newlist" class="form-control" placeholder="Type name for new list" aria-label="Type name for new list" aria-describedby="basic-addon1">
+            <button class="btn btn-primary" type="sumbit" name="addlist" value="addlist">Add list</button> 
+        </div>
+    </form>   
+    <span class="badge bg-secondary">To delete or edit a list, just click on it!</span>
+{% endblock %}
