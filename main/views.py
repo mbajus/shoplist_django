@@ -49,5 +49,5 @@ def curlist(response, id):
                 elif response.POST.get("delList"):
                     sl.delete()             
                     return render(response, 'main/mylists.html', {})    
-            return render(response, "main\list.html", {"sl": sl})
-    return render(response, "main\home.html", {})
+            return render(response, "main/list.html", {"sl": sl})
+    return render(response, "main/home.html", {})
